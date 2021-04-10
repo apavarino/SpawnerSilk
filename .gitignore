@@ -24,3 +24,6 @@ hs_err_pid*
 /.idea/
 /target/
 /SpawnerSilk.iml
+/META-INF/
+/out/artifacts/
+/dependency-reduced-pom.xml

@@ -9,7 +9,7 @@
 </h2>
 
 
-** Mine spawners with silk touch / Spawner management **
+**Mine spawners with silk touch / Spawner management**
 
 Java Edition required. Deadchest is mainly compatible with Bukkit, Spigot and Paper.
 

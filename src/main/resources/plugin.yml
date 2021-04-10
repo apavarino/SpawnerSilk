@@ -1,6 +1,6 @@
 name: SpawnerSilk
 main: me.crylonz.SpawnerSilk
-version: "3.3"
+version: "4.0.0"
 author: Crylonz
 softdepend: [ShopGUIPlus]
 description: Spawner is droppable

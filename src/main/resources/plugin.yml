@@ -1,0 +1,29 @@
+name: SpawnerSilk
+main: me.crylonz.SpawnerSilk
+version: "3.3"
+author: Crylonz
+softdepend: [ShopGUIPlus]
+description: Spawner is droppable
+api-version: "1.13"
+
+commands:
+    givespawner:
+      description: Give a spawner to a specifical player
+      usage: /givespawner <Player> <SpawnerType> [Amount]
+      permission: spawnersilk.givespawner
+      aliases : [gs]
+    editspawner:
+      description: Modify the spawner that you looking at
+      usage: /editspawner <spawnRange|spawnCount|MaxNearbyEntities|RequiredPlayerRange|Delay|MaxSpawnDelay|MinSpawnDelay> [Value]
+      permission: spawnersilk.editSpawner
+      aliases : [es]
+permissions:
+  spawnersilk.minespawner:
+    description: Allows you to mine spawner
+    default: true
+  spawnersilk.givespawner:
+      description: Allows you to give you spawner by command
+      default: op
+  spawnersilk.editspawner:
+    description: Allows you to edit you spawner by command
+    default: op

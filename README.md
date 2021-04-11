@@ -19,7 +19,7 @@ Java Edition required. SpawnerSilk is mainly compatible with Bukkit, Spigot and 
 * Curseforge: https://www.curseforge.com/minecraft/bukkit-plugins/spawnersilk
 * Bukkit : https://dev.bukkit.org/projects/spawnersilk
 
-# Statistics
+## Statistics
 <img align="center" src="https://bstats.org/signatures/bukkit/Spawnersilk.svg" alt="stats"/> 
 
 More stats [here](https://bstats.org/plugin/bukkit/SpawnerSilk/5536)

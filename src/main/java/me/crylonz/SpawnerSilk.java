@@ -44,7 +44,7 @@ public class SpawnerSilk extends JavaPlugin implements Listener {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new SpawnerSilkListener(), this);
 
-        Metrics metrics = new Metrics(this);
+        Metrics metrics = new Metrics(this, 5536);
 
         this.getCommand("givespawner").setExecutor(new GiveSpawnerCommandExecutor());
         this.getCommand("editspawner").setExecutor(new EditSpawnerCommandExecutor());

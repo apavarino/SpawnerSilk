@@ -9,9 +9,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
-import static me.crylonz.SpawnerSilk.*;
+import static me.crylonz.SpawnerSilk.log;
+import static me.crylonz.SpawnerSilk.playersUUID;
 
 public class GiveSpawnerCommandExecutor implements CommandExecutor {
 
@@ -52,7 +52,7 @@ public class GiveSpawnerCommandExecutor implements CommandExecutor {
                             }
                         }
 
-                        ItemStack is = stringToCustomItemStack(args[1], amount);
+                        ItemStack is = SpawnerAPI.stringToCustomItemStack(args[1], amount);
 
                         // if the item is valid
                         if (is.getItemMeta() != null && SpawnerAPI.getEntityType(is) != EntityType.UNKNOWN) {
@@ -92,63 +92,15 @@ public class GiveSpawnerCommandExecutor implements CommandExecutor {
         return true;
     }
 
-    /**
-     * Generate a Spawner itemStack from a string
-     * @param mobName Name of the mob
-     * @param amount Amount of spawner for the itemStack
-     * @return an ItemStack
-     */
-    private ItemStack stringToCustomItemStack(String mobName, int amount) {
-
-        ItemStack spawnerItem = new ItemStack(getSpawnerMaterial(), amount);
-        ItemMeta spawnerItemMeta = spawnerItem.getItemMeta();
-
-        // On transforme le nom du mob en nom de spawner
-        String name = capitalizeWord(mobName.replace("_"," ").toLowerCase()) + " Spawner";
-
-        if (spawnerItemMeta != null) {
-            spawnerItemMeta.setDisplayName(ChatColor.YELLOW + name);
-        }
-
-        spawnerItem.setItemMeta(spawnerItemMeta);
-
-        return spawnerItem;
-    }
-
     private String getUuid(String name) {
 
         final String[] uuid = new String[1];
         uuid[0] = "error";
         playersUUID.forEach((k, v) -> {
-            if(k.equals(name)) {uuid[0] = v;} } );
+            if (k.equals(name)) {
+                uuid[0] = v;
+            }
+        });
         return uuid[0];
-    }
-
-    /**
-     * Captitalize the first letter of each word of the given String
-     * @param str String to modify
-     * @return the mdofiied String
-     */
-    private String capitalizeWord(String str) {
-        StringBuilder s = new StringBuilder();
-
-        // Declare a character of space
-        // To identify that the next character is the starting
-        // of a new word
-        char ch = ' ';
-        for (int i = 0; i < str.length(); i++) {
-
-            // If previous character is space and current
-            // character is not space then it shows that
-            // current letter is the starting of the word
-            if (ch == ' ' && str.charAt(i) != ' ')
-                s.append(Character.toUpperCase(str.charAt(i)));
-            else
-                s.append(str.charAt(i));
-            ch = str.charAt(i);
-        }
-
-        // Return the string with trimming
-        return s.toString().trim();
     }
 }

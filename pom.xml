@@ -6,7 +6,7 @@
 
     <groupId>my.crylonz</groupId>
     <artifactId>SpawnerSilk</artifactId>
-    <version>4.2.0</version>
+    <version>5.0.0</version>
     <build>
         <plugins>
             <plugin>
@@ -61,7 +61,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -81,10 +81,10 @@
             <scope>compile</scope>
             <version>1.0.1</version>
             <exclusions>
-            <exclusion>
-                <artifactId>spigot-api</artifactId>
-                <groupId>org.spigotmc</groupId>
-            </exclusion>
+                <exclusion>
+                    <artifactId>spigot-api</artifactId>
+                    <groupId>org.spigotmc</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
     </dependencies>

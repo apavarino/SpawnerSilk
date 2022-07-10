@@ -22,6 +22,12 @@ public class SpawnerSilkTabCompletion implements TabCompleter {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
+            if (cmd.getName().equalsIgnoreCase("sps")) {
+                if (args.length == 1) {
+                    list.add("reload");
+                }
+            }
+
             if (cmd.getName().equalsIgnoreCase("editspawner")) {
 
                 if (args.length == 1) {

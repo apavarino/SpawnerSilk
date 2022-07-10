@@ -1,6 +1,6 @@
 name: SpawnerSilk
 main: me.crylonz.SpawnerSilk
-version: "4.2.0"
+version: "5.0.0"
 author: Crylonz
 softdepend: [ShopGUIPlus]
 description: Spawner is droppable
@@ -17,6 +17,9 @@ commands:
       usage: /editspawner <spawnRange|spawnCount|MaxNearbyEntities|RequiredPlayerRange|Delay|MaxSpawnDelay|MinSpawnDelay> [Value]
       permission: spawnersilk.editSpawner
       aliases : [es]
+    sps:
+      description: General command for SpawnerSilk
+      usage: /sps <params>
 permissions:
   spawnersilk.minespawner:
     description: Allows you to mine spawner
@@ -27,3 +30,6 @@ permissions:
   spawnersilk.editspawner:
     description: Allows you to edit you spawner by command
     default: op
+  spawnersilk.reload:
+      description: Allows you to reload the plugin
+      default: op

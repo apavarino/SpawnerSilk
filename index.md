@@ -15,7 +15,7 @@ Welcome to the official documentation of SpawnerSilk plugin. Here you will find 
 - [Plugin configuration](https://apavarino.github.io/SpawnerSilk/configuration)
 - [Commands & Permissions](https://apavarino.github.io/SpawnerSilk/commands-and-perms)
 - [Troubleshooting](https://apavarino.github.io/SpawnerSilk/troubleshooting)
-- [SpanwerSilk API](https://apavarino.github.io/SpawnerSilk/api)
+- [SpawnwerSilk API](https://apavarino.github.io/SpawnerSilk/api)
 - [Contribution](https://apavarino.github.io/SpawnerSilk/contribution)
 
 ## Community

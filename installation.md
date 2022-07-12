@@ -7,7 +7,7 @@ All you have to do it is to put the `SpawnerSilk-X.X.X.jar` in the `plugins` fol
 If everything goes well, you should see on the console
 
 ```
-[SpawnerSilk] Enabling DeadChest vX.X.X
+[SpawnerSilk] Enabling SpawnerSilk vX.X.X
 ```
 
 if you have any error, make sure to match the requirement. If needed, you can ask help on Discord

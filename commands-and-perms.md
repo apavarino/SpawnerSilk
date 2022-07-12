@@ -8,7 +8,7 @@ Command | Description | Permission
 `/givespawner <Player> <Type> [Amount]` | `spawnersilk.givespawner` | Give a specific spawner to a specific player
 `/editspawner <Params> <Value>` | `spawnersilk.editspawner` | Edit a spawner
 `/sps reload` | `spawnersilk.reload` | Reload the plugin
-| | `spawnersilk.minespawner` | Allows player to mine spawner
+ -- | `spawnersilk.minespawner` | Allows player to mine spawner
 
 
 

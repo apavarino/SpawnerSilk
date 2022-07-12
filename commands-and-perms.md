@@ -3,7 +3,7 @@ Make sure you have [installed](https://apavarino.github.io/SpawnerSilk/installat
 
 This section describes commands and permissions provided by the plugin
 
-Command | Description | Permission
+Command | Permission | Description
 --- | --- | --- |
 `/givespawner <Player> <Type> [Amount]` | `spawnersilk.givespawner` | Give a specific spawner to a specific player
 `/editspawner <Params> <Value>` | `spawnersilk.editspawner` | Edit a spawner

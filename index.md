@@ -10,13 +10,13 @@ Welcome to the official documentation of SpawnerSilk plugin. Here you will find 
 
 ## Table of Contents
 
-- [Download](https://apavarino.github.io/Deadchest/download)
-- [Installation](https://apavarino.github.io/Deadchest/installation)
-- [Plugin configuration](https://apavarino.github.io/Deadchest/configuration)
-- [Commands & Permissions](https://apavarino.github.io/Deadchest/commands-and-perms)
-- [Troubleshooting](https://apavarino.github.io/Deadchest/troubleshooting)
-- [SpanwerSilk API](https://apavarino.github.io/Deadchest/api)
-- [Contribution](https://apavarino.github.io/Deadchest/contribution)
+- [Download](https://apavarino.github.io/SpawnerSilk/download)
+- [Installation](https://apavarino.github.io/SpawnerSilk/installation)
+- [Plugin configuration](https://apavarino.github.io/SpawnerSilk/configuration)
+- [Commands & Permissions](https://apavarino.github.io/SpawnerSilk/commands-and-perms)
+- [Troubleshooting](https://apavarino.github.io/SpawnerSilk/troubleshooting)
+- [SpanwerSilk API](https://apavarino.github.io/SpawnerSilk/api)
+- [Contribution](https://apavarino.github.io/SpawnerSilk/contribution)
 
 ## Community
 

@@ -1,4 +1,4 @@
-## Deadchest - Configuration
+## SpawnerSilk - Configuration
 
 Make sure you have [installed](https://apavarino.github.io/SpawnerSilk/installation) the plugin before reading this step.
 

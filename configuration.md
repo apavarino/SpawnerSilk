@@ -19,6 +19,6 @@ Option | Value | Default | Description
 `use-egg` | true/false | true | Egg is consume when used on the spawner
 
 ### Next step
-See [commmands & permissions part](https://apavarino.github.io/SpawnerSilk/commands-and-perms) or go to [home page](https://apavarino.github.io/SpawnerSilk)
+See [commands & permissions part](https://apavarino.github.io/SpawnerSilk/commands-and-perms) or go to [home page](https://apavarino.github.io/SpawnerSilk)
 
 

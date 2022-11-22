@@ -91,6 +91,7 @@ public class SpawnerSilk extends JavaPlugin implements Listener {
         config.register("spawners-can-be-modified-by-egg", true);
         config.register("drop-to-inventory", false);
         config.register("use-egg", true);
+        config.register("drop-in-creative", false);
     }
 
     public SpawnerSilkConfig getDataConfig() {

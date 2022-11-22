@@ -45,6 +45,10 @@
 #   true : egg is consume on the spawner
 #   false : egg is not consume on the spawner
 #
+# drop-in-creative
+#   true : spawner drops on creative mode
+#   false : spawner don't drops on creative mode
+#
 
 auto-update: true
 need-silk-touch: true
@@ -56,6 +60,7 @@ explosion-drop-chance: 10
 spawners-can-be-modified-by-egg: true
 drop-to-inventory: false
 use-egg: true
+drop-in-creative: false
 
 
 

@@ -1,6 +1,7 @@
 package me.crylonz;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.CreatureSpawner;
@@ -72,7 +73,14 @@ public class SpawnerSilkListener implements Listener {
         EntityType entity = spawner.getSpawnedType();
         ItemStack spawnerItem = SpawnerAPI.getSpawner(entity);
 
+        e.setExpToDrop(0);
+
         int dropMode = plugin.getDataConfig().getInt("drop-mode");
+        boolean dropInCreative = plugin.getDataConfig().getBoolean("drop-in-creative");
+
+      if(e.getPlayer().getGameMode() == GameMode.CREATIVE && !dropInCreative) {
+          return;
+      }
 
         if (dropMode == 1) {
 
@@ -90,7 +98,7 @@ public class SpawnerSilkListener implements Listener {
                 if (dropSpawner) {
                     e.getPlayer().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.SPAWNER));
                 }
-                if(dropEgg) {
+                if (dropEgg) {
                     e.getPlayer().getWorld().dropItemNaturally(e.getBlock().getLocation(),
                             new ItemStack(Material.valueOf(entity.name().toUpperCase().replace(" ", "_") + "_SPAWN_EGG")));
                 }
@@ -103,12 +111,11 @@ public class SpawnerSilkListener implements Listener {
                     e.getPlayer().getInventory().addItem(spawnerItem);
                 }
             } else {
-                if(dropSpawner) {
+                if (dropSpawner) {
                     e.getPlayer().getWorld().dropItemNaturally(e.getBlock().getLocation(), spawnerItem);
                 }
             }
         }
-        e.setExpToDrop(0);
     }
 
     public boolean canGetSpawner(Player p) {

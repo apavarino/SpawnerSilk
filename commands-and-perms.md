@@ -24,6 +24,7 @@ The command can take in parameter several different options :
 - `minSpawnDelay` : Set the minimum spawn delay amount (in ticks)
 
 For each command a number is required after the option to set the new value.
+
 Example : 
 ```
 /editspawner requiredPlayerRange 5

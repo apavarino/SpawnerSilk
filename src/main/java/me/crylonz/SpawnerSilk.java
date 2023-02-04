@@ -92,6 +92,7 @@ public class SpawnerSilk extends JavaPlugin implements Listener {
         config.register("drop-to-inventory", false);
         config.register("use-egg", true);
         config.register("drop-in-creative", false);
+        config.register("spawners-generate-xp", false);
     }
 
     public SpawnerSilkConfig getDataConfig() {

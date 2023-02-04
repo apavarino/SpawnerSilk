@@ -73,14 +73,16 @@ public class SpawnerSilkListener implements Listener {
         EntityType entity = spawner.getSpawnedType();
         ItemStack spawnerItem = SpawnerAPI.getSpawner(entity);
 
-        e.setExpToDrop(0);
+        if (!plugin.getDataConfig().getBoolean("spawners-generate-xp")) {
+            e.setExpToDrop(0);
+        }
 
         int dropMode = plugin.getDataConfig().getInt("drop-mode");
         boolean dropInCreative = plugin.getDataConfig().getBoolean("drop-in-creative");
 
-      if(e.getPlayer().getGameMode() == GameMode.CREATIVE && !dropInCreative) {
-          return;
-      }
+        if (e.getPlayer().getGameMode() == GameMode.CREATIVE && !dropInCreative) {
+            return;
+        }
 
         if (dropMode == 1) {
 

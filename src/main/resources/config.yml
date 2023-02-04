@@ -49,18 +49,23 @@
 #   true : spawner drops on creative mode
 #   false : spawner don't drops on creative mode
 #
+# spawners-generate-xp
+#   true : xp drops when mining spawner (warning : risk of xp farming !)
+#   false :xp don't drops when mining spawner
+#
 
 auto-update: true
 need-silk-touch: true
 pickaxe-mode: 5
 drop-chance: 100
-drop-egg-chance : 100
+drop-egg-chance: 100
 drop-mode: 0
 explosion-drop-chance: 10
 spawners-can-be-modified-by-egg: true
 drop-to-inventory: false
 use-egg: true
 drop-in-creative: false
+spawners-generate-xp: false
 
 
 

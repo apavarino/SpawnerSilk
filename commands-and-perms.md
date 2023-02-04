@@ -10,7 +10,7 @@ Command | Permission | Description
 `/sps reload` | `spawnersilk.reload` | Reload the plugin
  -- | `spawnersilk.minespawner` | Allows player to mine spawner
 
-###  `/editspawner` command details
+###  /editspawner command details
 
 To use is this command you need to look at the spawner you want to edit.
 The command can take in parameter several different options :

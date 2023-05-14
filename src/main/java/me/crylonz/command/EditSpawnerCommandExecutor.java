@@ -9,8 +9,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.Arrays;
-
 public class EditSpawnerCommandExecutor implements CommandExecutor {
 
 	@Override
@@ -31,7 +29,8 @@ public class EditSpawnerCommandExecutor implements CommandExecutor {
 	public boolean runCommand(Player player, String[] args) {
 		Block block = player.getTargetBlockExact(10);
 		if (!player.hasPermission("spawnersilk.editspawner")) return false;
-		System.out.println("args " + Arrays.toString(args));
+		if (args == null) return false;
+
 		if (block != null && block.getType() == Material.SPAWNER) {
 			CreatureSpawner cs = (CreatureSpawner) block.getState();
 

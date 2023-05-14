@@ -40,10 +40,16 @@ public class GiveSpawnerCommandExecutor implements CommandExecutor {
 		Player player = null;
 		if ((sender instanceof Player))
 			player = (Player) sender;
-
+		String STR_INVALID_FORMAT = "[SpawnerSilk] BAD ARGUMENTS : Usage givespawner <Player> <SpawnerType> [Amount]";
+		if (args == null) {
+			STR_INVALID_FORMAT = "[SpawnerSilk] BAD ARGUMENTS : Usage /sps givespawner <Player> <SpawnerType> [Amount]";
+			if (player != null)
+				player.sendMessage(ChatColor.RED + STR_INVALID_FORMAT);
+			else
+				log.info(STR_INVALID_FORMAT);
+			return true;
+		}
 		if ((player != null && player.hasPermission("spawnersilk.givespawner")) || (!(sender instanceof Player))) {
-
-			String STR_INVALID_FORMAT = "[SpawnerSilk] BAD ARGUMENTS : Usage givespawner <Player> <SpawnerType> [Amount]";
 			if (args.length >= 2 && args.length < 4) {
 				Player destinator = null;
 

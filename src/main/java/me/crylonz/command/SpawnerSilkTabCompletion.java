@@ -12,56 +12,78 @@ import java.util.List;
 
 public class SpawnerSilkTabCompletion implements TabCompleter {
 
-    private List<String> list = new ArrayList<>();
+	private List<String> list = new ArrayList<>();
 
-    @Override
-    public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
 
-        list.clear();
+		list.clear();
 
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+		if (sender instanceof Player) {
+			Player player = (Player) sender;
 
-            if (cmd.getName().equalsIgnoreCase("sps")) {
-                if (args.length == 1) {
-                    list.add("reload");
-                }
-            }
+			if (cmd.getName().equalsIgnoreCase("sps")) {
+				if (args.length == 1) {
+					list.add("reload");
+					list.add("editspawner");
+					list.add("givespawner");
+				}
+				if (player.hasPermission("spawnersilk.editspawner"))
+					if (args.length == 2 && args[0].equalsIgnoreCase("editspawner")) {
+						this.addEditSpawnerTabComplete();
+					}
+				if (player.hasPermission("spawnersilk.givespawner"))
+					if (args.length >= 2 && args[0].equalsIgnoreCase("givespawner")) {
+						if (args.length == 2) {
+							for (Player p : Bukkit.getOnlinePlayers()) {
+								list.add(p.getName());
+							}
+						}
+						if (args.length == 3) {
+							for (EntityType entityType : EntityType.values()) {
+								list.add(entityType.name().toUpperCase());
+							}
+						}
+					}
+			}
 
-            if (cmd.getName().equalsIgnoreCase("editspawner")) {
+			if (cmd.getName().equalsIgnoreCase("editspawner")) {
+				if (args.length == 1) {
+					if (player.hasPermission("spawnersilk.editspawner")) {
+						this.addEditSpawnerTabComplete();
+					}
+				}
+			}
 
-                if (args.length == 1) {
-                    if (player.hasPermission("spawnersilk.editspawner")) {
-                        list.add("spawnrange");
-                        list.add("spawncount");
-                        list.add("maxNearbyEntities");
-                        list.add("requiredPlayerRange");
-                        list.add("delay");
-                        list.add("maxSpawnDelay");
-                        list.add("minSpawnDelay");
-                    }
-                }
-            }
+			if (cmd.getName().equalsIgnoreCase("givespawner")) {
+				if (player.hasPermission("spawnersilk.givespawner")) {
+					this.addGiveSpawnerTabComplete(args);
+				}
+			}
+		}
+		return list;
+	}
 
-            if (cmd.getName().equalsIgnoreCase("givespawner")) {
+	public void addEditSpawnerTabComplete() {
+		list.add("spawnrange");
+		list.add("spawncount");
+		list.add("maxNearbyEntities");
+		list.add("requiredPlayerRange");
+		list.add("delay");
+		list.add("maxSpawnDelay");
+		list.add("minSpawnDelay");
+	}
 
-                if (args.length == 1) {
-                    if (player.hasPermission("spawnersilk.givespawner")) {
-                        for (Player p : Bukkit.getOnlinePlayers()) {
-                            list.add(p.getName());
-                        }
-                    }
-                }
-
-                if (args.length == 2) {
-                    if (player.hasPermission("spawnersilk.givespawner")) {
-                        for (EntityType entityType : EntityType.values()) {
-                            list.add(entityType.name().toUpperCase());
-                        }
-                    }
-                }
-            }
-        }
-        return list;
-    }
+	public void addGiveSpawnerTabComplete(String[] args) {
+		if (args.length == 1) {
+			for (Player p : Bukkit.getOnlinePlayers()) {
+				list.add(p.getName());
+			}
+		}
+		if (args.length == 2) {
+			for (EntityType entityType : EntityType.values()) {
+				list.add(entityType.name().toUpperCase());
+			}
+		}
+	}
 }

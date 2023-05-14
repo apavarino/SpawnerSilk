@@ -3,6 +3,7 @@ package me.crylonz;
 import me.crylonz.command.EditSpawnerCommandExecutor;
 import me.crylonz.command.GiveSpawnerCommandExecutor;
 import me.crylonz.command.SpawnerSilkCommandExecutor;
+import me.crylonz.command.SpawnerSilkTabCompletion;
 import me.crylonz.utils.SpawnerSilkConfig;
 import me.crylonz.utils.SpawnerSilkUpdater;
 import org.bstats.bukkit.Metrics;
@@ -15,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 
@@ -43,6 +45,10 @@ public class SpawnerSilk extends JavaPlugin implements Listener {
 		this.getCommand("editspawner").setExecutor(editSpawnerCommandExecutor);
 		this.getCommand("sps").setExecutor(new SpawnerSilkCommandExecutor(this, giveSpawnerCommandExecutor, editSpawnerCommandExecutor));
 
+		Objects.requireNonNull(getCommand("givespawner")).setTabCompleter(new SpawnerSilkTabCompletion());
+		Objects.requireNonNull(getCommand("editspawner")).setTabCompleter(new SpawnerSilkTabCompletion());
+		Objects.requireNonNull(getCommand("sps")).setTabCompleter(new SpawnerSilkTabCompletion());
+		
 		if (Bukkit.getPluginManager().getPlugin("ShopGUIPlus") != null) {
 			this.spawnerProvider = new SpawnerSilkProvider();
 			hookIntoShopGui();

@@ -11,117 +11,124 @@ import org.bukkit.entity.Player;
 
 public class EditSpawnerCommandExecutor implements CommandExecutor {
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+		if (sender instanceof Player) {
+			Player player = (Player) sender;
 
-            if (args.length >= 1 && args.length <= 2) {
-                Block block = player.getTargetBlockExact(10);
+			if (args.length >= 1 && args.length <= 2) {
+				if (cmd.getName().equalsIgnoreCase("editspawner")) {
+					return this.runCommand(player, args);
+				}
+			}
+		}
+		return false;
+	}
 
-                if (block != null && block.getType() == Material.SPAWNER) {
-                    CreatureSpawner cs = (CreatureSpawner) block.getState();
-                    if (cmd.getName().equalsIgnoreCase("editspawner")) {
+	public boolean runCommand(Player player, String[] args) {
+		Block block = player.getTargetBlockExact(10);
+		if (!player.hasPermission("spawnersilk.editspawner")) return false;
+		if (args == null) return false;
 
-                        /// SPAWNRANGE
-                        if (args[0].equalsIgnoreCase("spawnrange")) {
-                            if (args.length == 2) {
-                                cs.setSpawnRange(Integer.parseInt(args[1]));
-                                cs.update();
-                                block.setBlockData(cs.getBlockData());
-                            }
-                            player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
-                                    "SpawnRange value set to : " + ChatColor.AQUA + cs.getSpawnRange());
-                            return true;
-                        }
+		if (block != null && block.getType() == Material.SPAWNER) {
+			CreatureSpawner cs = (CreatureSpawner) block.getState();
 
-                        /// SPAWNCOUNT
-                        else if (args[0].equalsIgnoreCase("spawncount")) {
-                            if (args.length == 2) {
-                                cs.setSpawnCount(Integer.parseInt(args[1]));
-                                cs.update();
-                                block.setBlockData(cs.getBlockData());
+			/// SPAWNRANGE
+			if (args[0].equalsIgnoreCase("spawnrange")) {
+				if (args.length == 2) {
+					cs.setSpawnRange(Integer.parseInt(args[1]));
+					cs.update();
+					block.setBlockData(cs.getBlockData());
+				}
+				player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
+						"SpawnRange value set to : " + ChatColor.AQUA + cs.getSpawnRange());
+				return true;
+			}
 
-                            }
-                            player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
-                                    "SpawnCount value set to : " + ChatColor.AQUA + cs.getSpawnCount());
-                            return true;
-                        }
+			/// SPAWNCOUNT
+			else if (args[0].equalsIgnoreCase("spawncount")) {
+				if (args.length == 2) {
+					cs.setSpawnCount(Integer.parseInt(args[1]));
+					cs.update();
+					block.setBlockData(cs.getBlockData());
 
-                        /// MaxNearbyEntities
-                        else if (args[0].equalsIgnoreCase("MaxNearbyEntities")) {
-                            if (args.length == 2) {
-                                cs.setMaxNearbyEntities(Integer.parseInt(args[1]));
-                                cs.update();
-                                block.setBlockData(cs.getBlockData());
-                            }
+				}
+				player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
+						"SpawnCount value set to : " + ChatColor.AQUA + cs.getSpawnCount());
+				return true;
+			}
 
-                            player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
-                                    "MaxNearbyEntities value set to : " + ChatColor.AQUA + cs.getMaxNearbyEntities());
-                            return true;
-                        }
+			/// MaxNearbyEntities
+			else if (args[0].equalsIgnoreCase("MaxNearbyEntities")) {
+				if (args.length == 2) {
+					cs.setMaxNearbyEntities(Integer.parseInt(args[1]));
+					cs.update();
+					block.setBlockData(cs.getBlockData());
+				}
 
-                        /// RequiredPlayerRange
-                        else if (args[0].equalsIgnoreCase("RequiredPlayerRange")) {
-                            if (args.length == 2) {
-                                cs.setRequiredPlayerRange(Integer.parseInt(args[1]));
-                                cs.update();
-                                block.setBlockData(cs.getBlockData());
-                            }
+				player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
+						"MaxNearbyEntities value set to : " + ChatColor.AQUA + cs.getMaxNearbyEntities());
+				return true;
+			}
 
-                            player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
-                                    "RequiredPlayerRange value set to : " + ChatColor.AQUA + cs.getRequiredPlayerRange());
-                            return true;
-                        }
+			/// RequiredPlayerRange
+			else if (args[0].equalsIgnoreCase("RequiredPlayerRange")) {
+				if (args.length == 2) {
+					cs.setRequiredPlayerRange(Integer.parseInt(args[1]));
+					cs.update();
+					block.setBlockData(cs.getBlockData());
+				}
 
-                        /// Delay
-                        else if (args[0].equalsIgnoreCase("Delay")) {
-                            if (args.length == 2) {
-                                cs.setDelay(Integer.parseInt(args[1]));
-                                cs.update();
-                                block.setBlockData(cs.getBlockData());
-                            }
+				player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
+						"RequiredPlayerRange value set to : " + ChatColor.AQUA + cs.getRequiredPlayerRange());
+				return true;
+			}
 
-                            player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
-                                    "Delay value set to : " + ChatColor.AQUA + cs.getDelay());
-                            return true;
-                        }
+			/// Delay
+			else if (args[0].equalsIgnoreCase("Delay")) {
+				if (args.length == 2) {
+					cs.setDelay(Integer.parseInt(args[1]));
+					cs.update();
+					block.setBlockData(cs.getBlockData());
+				}
 
-                        /// MaxSpawnDelay
-                        else if (args[0].equalsIgnoreCase("MaxSpawnDelay")) {
-                            if (args.length == 2) {
-                                cs.setMaxSpawnDelay(Integer.parseInt(args[1]));
-                                cs.update();
-                                block.setBlockData(cs.getBlockData());
-                            }
+				player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
+						"Delay value set to : " + ChatColor.AQUA + cs.getDelay());
+				return true;
+			}
 
-                            player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
-                                    "MaxSpawnDelay value set to : " + ChatColor.AQUA + cs.getMaxSpawnDelay());
-                            return true;
-                        }
-                        /// MinSpawnDelay
-                        else if (args[0].equalsIgnoreCase("MinSpawnDelay")) {
-                            if (args.length == 2) {
-                                cs.setMinSpawnDelay(Integer.parseInt(args[1]));
-                                cs.update();
-                                block.setBlockData(cs.getBlockData());
-                            }
+			/// MaxSpawnDelay
+			else if (args[0].equalsIgnoreCase("MaxSpawnDelay")) {
+				if (args.length == 2) {
+					cs.setMaxSpawnDelay(Integer.parseInt(args[1]));
+					cs.update();
+					block.setBlockData(cs.getBlockData());
+				}
 
-                            player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
-                                    "MinSpawnDelay value set to : " + ChatColor.AQUA + cs.getMinSpawnDelay());
-                            return true;
-                        }
-                    }
-                } else {
-                    player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.RED +
-                            "You must look the spawner you want to edit");
-                    return true;
-                }
+				player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
+						"MaxSpawnDelay value set to : " + ChatColor.AQUA + cs.getMaxSpawnDelay());
+				return true;
+			}
+			/// MinSpawnDelay
+			else if (args[0].equalsIgnoreCase("MinSpawnDelay")) {
+				if (args.length == 2) {
+					cs.setMinSpawnDelay(Integer.parseInt(args[1]));
+					cs.update();
+					block.setBlockData(cs.getBlockData());
+				}
 
+				player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.WHITE +
+						"MinSpawnDelay value set to : " + ChatColor.AQUA + cs.getMinSpawnDelay());
+				return true;
+			}
 
-            }
-        }
-        return false;
-    }
+		} else {
+			player.sendMessage(ChatColor.GOLD + "[SpawnerSilk] " + ChatColor.RED +
+					"You must look the spawner you want to edit");
+			return true;
+		}
+		return false;
+	}
+
 }

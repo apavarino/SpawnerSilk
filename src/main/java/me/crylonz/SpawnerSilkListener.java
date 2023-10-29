@@ -73,6 +73,10 @@ public class SpawnerSilkListener implements Listener {
         EntityType entity = spawner.getSpawnedType();
         ItemStack spawnerItem = SpawnerAPI.getSpawner(entity);
 
+        if(plugin.getDataConfig().getList("black-list").contains(entity.name())) {
+            return;
+        }
+
         if (!plugin.getDataConfig().getBoolean("spawners-generate-xp")) {
             e.setExpToDrop(0);
         }

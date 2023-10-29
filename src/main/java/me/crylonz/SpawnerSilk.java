@@ -15,8 +15,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 import java.util.logging.Logger;
 
 
@@ -98,6 +97,7 @@ public class SpawnerSilk extends JavaPlugin implements Listener {
 		config.register("use-egg", true);
 		config.register("drop-in-creative", false);
 		config.register("spawners-generate-xp", false);
+		config.register("black-list", Collections.singleton("BOAT"));
 	}
 
 	public SpawnerSilkConfig getDataConfig() {

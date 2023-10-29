@@ -53,6 +53,9 @@
 #   true : xp drops when mining spawner (warning : risk of xp farming !)
 #   false :xp don't drops when mining spawner
 #
+# black-list
+# You can put spawners that you don't want droppable in this list. The name is the entity name in uppercase (ex BEE).
+# In case of space in the name just put an _ (ex : ZOMBIE_HORSE)
 
 auto-update: true
 need-silk-touch: true
@@ -66,6 +69,8 @@ drop-to-inventory: false
 use-egg: true
 drop-in-creative: false
 spawners-generate-xp: false
+black-list:
+  - 'BOAT_SPAWNER'
 
 
 

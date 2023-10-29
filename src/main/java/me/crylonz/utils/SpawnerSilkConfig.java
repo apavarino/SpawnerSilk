@@ -5,6 +5,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SpawnerSilkConfig {
@@ -25,6 +26,12 @@ public class SpawnerSilkConfig {
     public Boolean getBoolean(String key) {
         return (Boolean) configData.get(key);
     }
+
+
+    public ArrayList<String> getList(String key) {
+        return (ArrayList<String>) configData.get(key);
+    }
+
 
     public double getDouble(String key) {
         return (double) configData.get(key);

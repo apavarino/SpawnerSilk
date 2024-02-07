@@ -1,4 +1,4 @@
-package me.crylonz;
+package me.crylonz.spawnersilk;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.EntityType;
@@ -7,7 +7,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.logging.Logger;
 
-import static me.crylonz.SpawnerSilk.getSpawnerMaterial;
+import static me.crylonz.spawnersilk.SpawnerSilk.getSpawnerMaterial;
 
 public class SpawnerAPI {
 

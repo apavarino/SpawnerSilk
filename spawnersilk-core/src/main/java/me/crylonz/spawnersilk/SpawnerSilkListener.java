@@ -1,4 +1,4 @@
-package me.crylonz;
+package me.crylonz.spawnersilk;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -25,8 +25,8 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
 
-import static me.crylonz.SpawnerSilk.getSpawnerMaterial;
-import static me.crylonz.SpawnerSilk.playersUUID;
+import static me.crylonz.spawnersilk.SpawnerSilk.getSpawnerMaterial;
+import static me.crylonz.spawnersilk.SpawnerSilk.playersUUID;
 
 public class SpawnerSilkListener implements Listener {
 

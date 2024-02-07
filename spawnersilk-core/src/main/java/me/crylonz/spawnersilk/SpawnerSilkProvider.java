@@ -1,4 +1,4 @@
-package me.crylonz;
+package me.crylonz.spawnersilk;
 
 import net.brcdev.shopgui.spawner.external.provider.ExternalSpawnerProvider;
 import org.bukkit.entity.EntityType;

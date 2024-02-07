@@ -1,6 +1,6 @@
-package me.crylonz.command;
+package me.crylonz.spawnersilk.command;
 
-import me.crylonz.SpawnerSilk;
+import me.crylonz.spawnersilk.SpawnerSilk;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,8 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
-
-import static me.crylonz.SpawnerSilk.log;
 
 public class SpawnerSilkCommandExecutor implements CommandExecutor {
 
@@ -78,7 +76,7 @@ public class SpawnerSilkCommandExecutor implements CommandExecutor {
 
 
 		if (player == null) {
-			log.info("[SpawnerSilk] " + message);
+			SpawnerSilk.log.info("[SpawnerSilk] " + message);
 		} else {
 			player.sendMessage(prefixMessage + "[SpawnerSilk] " + message);
 		}

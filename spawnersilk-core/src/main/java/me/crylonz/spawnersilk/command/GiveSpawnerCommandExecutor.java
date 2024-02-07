@@ -1,6 +1,7 @@
-package me.crylonz.command;
+package me.crylonz.spawnersilk.command;
 
-import me.crylonz.SpawnerAPI;
+import me.crylonz.spawnersilk.SpawnerAPI;
+import me.crylonz.spawnersilk.SpawnerSilk;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,9 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-
-import static me.crylonz.SpawnerSilk.log;
-import static me.crylonz.SpawnerSilk.playersUUID;
 
 public class GiveSpawnerCommandExecutor implements CommandExecutor {
 
@@ -28,7 +26,7 @@ public class GiveSpawnerCommandExecutor implements CommandExecutor {
 
 		final String[] uuid = new String[1];
 		uuid[0] = "error";
-		playersUUID.forEach((k, v) -> {
+		SpawnerSilk.playersUUID.forEach((k, v) -> {
 			if (k.equals(name)) {
 				uuid[0] = v;
 			}
@@ -46,7 +44,7 @@ public class GiveSpawnerCommandExecutor implements CommandExecutor {
 			if (player != null)
 				player.sendMessage(ChatColor.RED + STR_INVALID_FORMAT);
 			else
-				log.info(STR_INVALID_FORMAT);
+				SpawnerSilk.log.info(STR_INVALID_FORMAT);
 			return true;
 		}
 		if ((player != null && player.hasPermission("spawnersilk.givespawner")) || (!(sender instanceof Player))) {
@@ -70,7 +68,7 @@ public class GiveSpawnerCommandExecutor implements CommandExecutor {
 							if (player != null)
 								player.sendMessage(ChatColor.RED + STR_INVALID_FORMAT);
 							else
-								log.info(STR_INVALID_FORMAT);
+								SpawnerSilk.log.info(STR_INVALID_FORMAT);
 							return true;
 						}
 					}
@@ -84,7 +82,7 @@ public class GiveSpawnerCommandExecutor implements CommandExecutor {
 						if (player != null)
 							player.sendMessage(ChatColor.GREEN + STR_CMD_SUCCESSFULL);
 						else
-							log.info(STR_CMD_SUCCESSFULL);
+							SpawnerSilk.log.info(STR_CMD_SUCCESSFULL);
 					}
 					// item not valid
 					else {
@@ -92,7 +90,7 @@ public class GiveSpawnerCommandExecutor implements CommandExecutor {
 						if (player != null)
 							player.sendMessage(ChatColor.RED + STR_BAD_FORMAT);
 						else
-							log.info(STR_BAD_FORMAT);
+							SpawnerSilk.log.info(STR_BAD_FORMAT);
 					}
 
 					// destinator not valid
@@ -101,14 +99,14 @@ public class GiveSpawnerCommandExecutor implements CommandExecutor {
 					if (player != null)
 						player.sendMessage(ChatColor.RED + STR_INVALID_PLAYER);
 					else
-						log.info(STR_INVALID_PLAYER);
+						SpawnerSilk.log.info(STR_INVALID_PLAYER);
 				}
 
 				// not good argument structure
 			} else if (player != null)
 				player.sendMessage(ChatColor.RED + STR_INVALID_FORMAT);
 			else
-				log.info(STR_INVALID_FORMAT);
+				SpawnerSilk.log.info(STR_INVALID_FORMAT);
 		}
 		return true;
 	}

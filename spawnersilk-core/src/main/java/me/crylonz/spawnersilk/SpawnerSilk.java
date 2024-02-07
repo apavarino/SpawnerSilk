@@ -1,11 +1,11 @@
-package me.crylonz;
+package me.crylonz.spawnersilk;
 
-import me.crylonz.command.EditSpawnerCommandExecutor;
-import me.crylonz.command.GiveSpawnerCommandExecutor;
-import me.crylonz.command.SpawnerSilkCommandExecutor;
-import me.crylonz.command.SpawnerSilkTabCompletion;
-import me.crylonz.utils.SpawnerSilkConfig;
-import me.crylonz.utils.SpawnerSilkUpdater;
+import me.crylonz.spawnersilk.command.EditSpawnerCommandExecutor;
+import me.crylonz.spawnersilk.command.GiveSpawnerCommandExecutor;
+import me.crylonz.spawnersilk.command.SpawnerSilkCommandExecutor;
+import me.crylonz.spawnersilk.command.SpawnerSilkTabCompletion;
+import me.crylonz.spawnersilk.utils.SpawnerSilkConfig;
+import me.crylonz.spawnersilk.utils.SpawnerSilkUpdater;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

@@ -1,4 +1,4 @@
-package me.crylonz.command;
+package me.crylonz.spawnersilk.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

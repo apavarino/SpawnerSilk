@@ -1,11 +1,14 @@
 package me.crylonz.spawnersilk;
 
+import me.crylonz.spawnersilk.utils.ArmorStandCleaner;
+import me.crylonz.spawnersilk.utils.SpawnerSilkHologram;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -20,13 +23,16 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static me.crylonz.spawnersilk.SpawnerSilk.getSpawnerMaterial;
 import static me.crylonz.spawnersilk.SpawnerSilk.playersUUID;
+import static org.bukkit.Bukkit.getServer;
 
 public class SpawnerSilkListener implements Listener {
 
@@ -73,7 +79,10 @@ public class SpawnerSilkListener implements Listener {
         EntityType entity = spawner.getSpawnedType();
         ItemStack spawnerItem = SpawnerAPI.getSpawner(entity);
 
-        if(plugin.getDataConfig().getList("black-list").contains(entity.name())) {
+        if (plugin.getDataConfig()
+                .getList("black-list")
+                .stream()
+                .anyMatch(bannedEntity -> bannedEntity.toUpperCase().contains(entity.name().toUpperCase()))) {
             return;
         }
 
@@ -190,6 +199,37 @@ public class SpawnerSilkListener implements Listener {
                 CreatureSpawner cs = (CreatureSpawner) e.getPlayer().getTargetBlock(null, 5).getState();
                 cs.setSpawnedType(EntityType.valueOf(e.getItem().getType().name().replace("_SPAWN_EGG", "")));
                 cs.update();
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent e) {
+        if (plugin.getDataConfig().getBoolean("spawner-overlay") && e.getPlayer().hasPermission("spawnersilk.overlay")) {
+            Block block = e.getPlayer().getTargetBlockExact(10);
+
+            // Player look at a spawner
+            if (block != null && block.getType() == Material.SPAWNER) {
+                CreatureSpawner cs = (CreatureSpawner) block.getState();
+
+                // if holo is now already display
+                if (e.getPlayer().getWorld()
+                        .getNearbyEntities(block.getLocation(), 1, 3, 1)
+                        .stream().noneMatch(entity -> entity.getType() == EntityType.ARMOR_STAND)) {
+
+                    ArrayList<ArmorStand> armorStands = new ArrayList<>();
+
+                    armorStands.add(SpawnerSilkHologram.generateHologram(cs.getLocation(), ChatColor.GOLD + "-- " + cs.getSpawnedType() + " Spawner --", 0.5f, 0.40f, 0.5f, this.plugin, e.getPlayer().getUniqueId()));
+                    armorStands.add(SpawnerSilkHologram.generateHologram(cs.getLocation(), ChatColor.GREEN + "Spawn Count " + ChatColor.WHITE + cs.getSpawnCount(), 0.5f, 0.05f, 0.5f, this.plugin, e.getPlayer().getUniqueId()));
+                    armorStands.add(SpawnerSilkHologram.generateHologram(cs.getLocation(), ChatColor.GREEN + "Spawn Range " + ChatColor.WHITE + cs.getSpawnRange(), 0.5f, -0.20f, 0.5f, this.plugin, e.getPlayer().getUniqueId()));
+                    armorStands.add(SpawnerSilkHologram.generateHologram(cs.getLocation(), ChatColor.GREEN + "Max Entities " + ChatColor.WHITE + cs.getMaxNearbyEntities(), 0.5f, -0.45f, 0.5f, this.plugin, e.getPlayer().getUniqueId()));
+                    armorStands.add(SpawnerSilkHologram.generateHologram(cs.getLocation(), ChatColor.GREEN + "Player Range " + ChatColor.WHITE + cs.getRequiredPlayerRange(), 0.5f, -0.70f, 0.5f, this.plugin, e.getPlayer().getUniqueId()));
+                    armorStands.add(SpawnerSilkHologram.generateHologram(cs.getLocation(), ChatColor.GREEN + "Max Spawn Delay " + ChatColor.WHITE + cs.getMaxSpawnDelay(), 0.5f, -0.95f, 0.5f, this.plugin, e.getPlayer().getUniqueId()));
+                    armorStands.add(SpawnerSilkHologram.generateHologram(cs.getLocation(), ChatColor.GREEN + "Min Spawn Delay " + ChatColor.WHITE + cs.getMinSpawnDelay(), 0.5f, -1.2f, 0.5f, this.plugin, e.getPlayer().getUniqueId()));
+
+                    getServer().getScheduler().scheduleSyncDelayedTask(this.plugin, new ArmorStandCleaner(armorStands), 20L * plugin.getDataConfig().getInt("spawner-overlay-delay"));
+
+                }
             }
         }
     }

@@ -94,6 +94,9 @@ public class SpawnerSilk extends JavaPlugin implements Listener {
         config.register("use-egg", true);
         config.register("drop-in-creative", false);
         config.register("spawners-generate-xp", false);
+        config.register("spawners-generate-xp", false);
+        config.register("spawner-overlay", true);
+        config.register("spawner-overlay-delay", 10);
         config.register("black-list", Collections.singleton("BOAT"));
     }
 

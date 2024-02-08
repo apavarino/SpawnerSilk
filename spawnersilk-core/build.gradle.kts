@@ -25,7 +25,7 @@ dependencies {
     compileOnly("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")
     compileOnly("com.googlecode.json-simple:json-simple:1.1.1")
     compileOnly("com.sk89q.worldguard:worldguard-bukkit:7.0.5-SNAPSHOT")
-    implementation("com.github.brcdev-minecraft:shopgui-api:1.0.1")
+    compileOnly("com.github.brcdev-minecraft:shopgui-api:1.0.1")
 
     implementation("org.bstats:bstats-bukkit:2.2.1")
 

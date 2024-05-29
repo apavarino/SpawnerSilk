@@ -8,7 +8,7 @@ This section describes how to configure SpawnerSilk through  the`config.yml` fil
 Option | Value | Default | Description
 --- | --- | --- | ---
 `auto-update` | boolean  | true | Enable or disable plugin auto update
-`need-silk-touch-to-destroy` | boolean  | true |  Only player with silkTouch can destroy spawner (need spawnersilk.minespawner permission)
+`need-silk-touch-to-destroy` | boolean  | false |  Only player with silkTouch can destroy spawner (need spawnersilk.minespawner permission)
 `need-silk-touch` | boolean  | true | Player need silk touch to collect spawner
 `pickaxe-mode` | 0..6  | 5 | 0 : Player can get spawner by breaking it no matter how<br>1 : Player need to break the spawner with wooden pickaxe or better<br>2 : Player need to break the spawner with stone pickaxe or better<br>3 : Player need to break the spawner with iron pickaxe or better<br>4 : Player need to break the spawner with golden pickaxe or better<br>5 : Player need to break the spawner with diamond pickaxe or better<br>6 : Player need to break the spawner with netherite pickaxe
 `drop-chance` | 0..100  | 100 | Percentage of chance that player drop a spawner by mining it

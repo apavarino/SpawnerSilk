@@ -60,6 +60,11 @@ public class SpawnerSilkListener implements Listener {
             if (e.getBlock().getType() == getSpawnerMaterial() && e.getPlayer().hasPermission("spawnersilk.minespawner")) {
                 Player p = e.getPlayer();
 
+                if (!p.getInventory().getItemInMainHand().getEnchantments().containsKey(Enchantment.SILK_TOUCH)
+                        && plugin.getDataConfig().getBoolean("need-silk-touch-to-destroy")) {
+                    e.setCancelled(true);
+                }
+
                 if ((p.getInventory().getItemInMainHand().getEnchantments().containsKey(Enchantment.SILK_TOUCH)
                         || !plugin.getDataConfig().getBoolean("need-silk-touch")) && canGetSpawner(p)) {
 

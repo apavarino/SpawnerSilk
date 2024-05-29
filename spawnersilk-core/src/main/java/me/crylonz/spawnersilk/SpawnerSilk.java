@@ -83,6 +83,7 @@ public class SpawnerSilk extends JavaPlugin implements Listener {
 
     public void registerConfig() {
         config.register("auto-update", true);
+        config.register("need-silk-touch-to-destroy", false);
         config.register("need-silk-touch", true);
         config.register("pickaxe-mode", 5);
         config.register("drop-chance", 100);

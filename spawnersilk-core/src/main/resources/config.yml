@@ -13,7 +13,11 @@
 # false : You need to download and install update by yourself
 auto-update: true
 
-# true  : Only player with silkTouch can drop spawner
+# true  : Only player with silkTouch can destroy spawner (need spawnersilk.minespawner permission)
+# false : Everybody can destroy spawner
+need-silk-touch-to-destroy: false
+
+# true  : Only player with silkTouch can drop spawner (need spawnersilk.minespawner permission)
 # false : Everybody can drop spawner
 need-silk-touch: true
 
